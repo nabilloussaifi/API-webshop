@@ -9,18 +9,18 @@ const { ensureAuthenticated } = require('../config/auth')
 
 //welcome page
 router.get('/', (req, res) => {
-    res.render('welcome');    
+    res.send('welcome');    
     // => create the welcome.ejs file
 })
 
 
 //register page
 router.get('/register', (req, res) => {
-    res.render('register');    
+    res.send('register');    
     // => create the register.ejs file
 })
 router.get('/', ensureAuthenticated, (req, res) => {
-    res.render('welcome', {
+    res.send('welcome', {
         user: req.user
     });
 })
