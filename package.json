@@ -17,6 +17,7 @@
   "author": "",
   "license": "ISC",
   "dependencies": {
+    "@heroku-cli/plugin-buildpacks": "^7.54.0",
     "bcrypt": "^5.0.1",
     "connect-flash": "^0.1.1",
     "dotenv": "^10.0.0",
