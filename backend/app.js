@@ -6,6 +6,7 @@ const expressEjsLayout = require('express-ejs-layouts')
 const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require("passport");
+const cors = require('cors');
 
 //passport config:x
 require('./config/passport')(passport)
@@ -40,7 +41,7 @@ app.use(express.json());
 //Routes
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
-app.use('/api/products', productRoutes);
+app.use('/api/products', cors(), productRoutes);
 
 const PORT = process.env.PORT || 5000;
 
