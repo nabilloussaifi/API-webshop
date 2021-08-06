@@ -7,7 +7,7 @@ const flash = require('connect-flash');
 const session = require('express-session');
 const passport = require("passport");
 
-//passport config:
+//passport config:x
 require('./config/passport')(passport)
 
 connectDB();
