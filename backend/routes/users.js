@@ -6,10 +6,10 @@ const passport = require('passport');
 
 //login handle
 router.get('/login', (req, res) => {
-    // res.render('login');
+    res.render('login');
 })
 router.get('/register', (req, res) => {
-    // res.render('register')
+    res.render('register')
 })
 //Register handle
 router.post('/login', (req, res, next) => {
@@ -37,20 +37,20 @@ router.post('/register', (req, res) => {
         errors.push({ msg: 'password atleast 6 characters' })
     }
     if (errors.length > 0) {
-        // res.render('register', {
-        //     errors: errors,
-        //     name: name,
-        //     email: email,
-        //     password: password,
-        //     password2: password2
-        // })
+        res.render('register', {
+            errors: errors,
+            name: name,
+            email: email,
+            password: password,
+            password2: password2
+        })
     } else {
         //validation passed
         User.findOne({ email: email }).exec((err, user) => {
             console.log(user);
             if (user) {
                 errors.push({ msg: 'email already registered' });
-                // res.render('register', { errors, name, email, password, password2 })
+                res.render('register', { errors, name, email, password, password2 })
             } else {
                 const newUser = new User({
                     name: name,
@@ -70,7 +70,7 @@ router.post('/register', (req, res) => {
                                 .then((value) => {
                                     console.log(value)
                                     req.flash('success_msg', 'You have now registered!');
-                                    // res.redirect('/users/login');
+                                    res.redirect('/users/login');
                                 })
                                 .catch(value => console.log(value));
 
@@ -80,9 +80,9 @@ router.post('/register', (req, res) => {
     }
 })
 //logout
-// router.get('/logout', (req, res) => {
-//     req.logout();
-//     req.flash('success_msg', 'Now logged out');
-//     res.redirect('/users/login');
-// })
+router.get('/logout', (req, res) => {
+    req.logout();
+    req.flash('success_msg', 'Now logged out');
+    res.redirect('/users/login');
+})
 module.exports = router;
