@@ -15,6 +15,8 @@ connectDB();
 
 const app = express();
 
+app.use(cors());
+
 //EJS
 app.set('view engine', 'ejs');
 app.use(expressEjsLayout);
