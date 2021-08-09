@@ -15,4 +15,6 @@ router.get('/', getAllProducts)
 //@access Public
 router.get('/:id', getProductById)
 
+
+
 module.exports = router;
