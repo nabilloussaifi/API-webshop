@@ -44,6 +44,7 @@ app.use(express.json());
 app.use('/', require('./routes/index'));
 app.use('/users', require('./routes/users'));
 app.use('/api/products', cors(), productRoutes);
+app.use('/order', cors(), require('./routes/orderRoutes'))
 
 const PORT = process.env.PORT || 5000;
 
