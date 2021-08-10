@@ -14,8 +14,8 @@ router.get('/register', (req, res) => {
 //Register handle
 router.post('/login', (req, res, next) => {
     passport.authenticate('local', {
-        successRedirect: '/',
-        failureRedirect: '/users/login',
+        // successRedirect: '/',
+        // failureRedirect: '/users/login',
         failureFlash: true
     })(req, res, next)
 })
@@ -37,20 +37,20 @@ router.post('/register', (req, res) => {
         errors.push({ msg: 'password atleast 6 characters' })
     }
     if (errors.length > 0) {
-        res.render('register', {
-            errors: errors,
-            name: name,
-            email: email,
-            password: password,
-            password2: password2
-        })
+        // res.render('register', {
+        //     errors: errors,
+        //     name: name,
+        //     email: email,
+        //     password: password,
+        //     password2: password2
+        // })
     } else {
         //validation passed
         User.findOne({ email: email }).exec((err, user) => {
             console.log(user);
             if (user) {
                 errors.push({ msg: 'email already registered' });
-                res.render('register', { errors, name, email, password, password2 })
+                // res.render('register', { errors, name, email, password, password2 })
             } else {
                 const newUser = new User({
                     name: name,
@@ -70,7 +70,7 @@ router.post('/register', (req, res) => {
                                 .then((value) => {
                                     console.log(value)
                                     req.flash('success_msg', 'You have now registered!');
-                                    res.redirect('/users/login');
+                                    // res.redirect('/users/login');
                                 })
                                 .catch(value => console.log(value));
 
