@@ -1,3 +1,4 @@
+const Order = require('../models/order');
 const Product = require('../models/Product');
 
 const getAllProducts = async (req, res) => {
@@ -8,18 +9,18 @@ const getAllProducts = async (req, res) => {
         res.send(products);
     } catch (error) {
         console.error(error);
-        res.status(500).json({message: "Server Error"});
+        res.status(500).json({ message: "Server Error" });
     }
 };
 
 const getProductById = async (req, res) => {
     try {
-        const products = await Product.findById(req.params.id);
-
-        res.json(product);
+        const product = await Product.findById(req.params._id);
+        await Order.findOneAndUpdate({ _id: req.order._id }, { $push: { products: product._id } })
+        res.send(product);
     } catch (error) {
         console.error(error);
-        res.status(500).json({message: "Server Error"});
+        res.status(500).json({ message: "Server Error" });
     }
 };
 
