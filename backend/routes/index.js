@@ -7,16 +7,16 @@ const { ensureAuthenticated } = require('../config/auth')
 
 
 
-//welcome page
+//GET Homepage
 router.get('/', (req, res) => {
-    res.send('welcome');    
-    // => create the welcome.ejs file
+    res.render('homepage', {title: 'Homepage'});    
+    // => create the homepage.ejs file
 })
 
 
 //register page
 router.get('/register', (req, res) => {
-    res.send('register');    
+    res.send('register', {title: ''});    
     // => create the register.ejs file
 })
 router.get('/', ensureAuthenticated, (req, res) => {
