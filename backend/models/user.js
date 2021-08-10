@@ -15,7 +15,13 @@ const UserSchema = new mongoose.Schema({
     date: {
         type: Date,
         default: Date.now
-    }
+    },
+    orders: [
+        {
+            type: mongoose.Schema.Types.ObjectId,
+            ref: "Order"
+        }
+    ]
 });
 const User = mongoose.model('User', UserSchema);
 

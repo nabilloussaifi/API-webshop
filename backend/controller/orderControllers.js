@@ -1,6 +1,16 @@
-// this function should create a order when adding product on cart
-const createOrder = (req, res, next) => {
+const Order = require('../models/order')
+const User = require('../models/user')
 
+
+// this function should create a order when adding product on cart
+const createOrder = async (req, res, next) => {
+    const newOrder = new Order({})
+    try {
+        await newOrder.save()
+        await User.findOneAndUpdate({ _id: req.user._id }, { $push: { orders: newOrder._id } })
+    } catch (err) {
+        console.log(err)
+    }
 }
 
 
