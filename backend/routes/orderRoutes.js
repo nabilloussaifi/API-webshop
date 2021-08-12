@@ -5,8 +5,7 @@ const Order = require('../models/order')
 
 
 
-router.post('/update', updateFromOrder)
-router.delete('/delete', deleteFromOrder)
+
 router.post('/new', createOrder)
 
 
