@@ -16,13 +16,16 @@ const getAllProducts = async (req, res) => {
 const getProductById = async (req, res) => {
     try {
         const product = await Product.findById(req.params._id);
-        await Order.findOneAndUpdate({ _id: req.order._id }, { $push: { products: product._id } })
-        res.send(product);
+        res.send(product)
+
     } catch (error) {
         console.error(error);
         res.status(500).json({ message: "Server Error" });
     }
 };
+
+
+
 
 module.exports = {
     getAllProducts,
