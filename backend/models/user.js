@@ -1,12 +1,17 @@
 const mongoose = require('mongoose');
 const UserSchema = new mongoose.Schema({
-    name: {
+    first_name: {
         type: String,
-        required: true
+        default: null
+    },
+    last_name: {
+        type: String,
+        default: null
     },
     email: {
         type: String,
-        required: true
+        required: true,
+        unique: true
     },
     password: {
         type: String,
@@ -21,7 +26,10 @@ const UserSchema = new mongoose.Schema({
             type: mongoose.Schema.Types.ObjectId,
             ref: "Order"
         }
-    ]
+    ],
+    token: {
+        type: String
+    }
 });
 const User = mongoose.model('User', UserSchema);
 

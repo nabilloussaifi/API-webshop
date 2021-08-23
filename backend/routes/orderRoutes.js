@@ -1,12 +1,15 @@
 const express = require('express');
 const router = express.Router();
-const { createOrder, updateFromOrder, deleteFromOrder } = require('../controller/orderControllers')
-const Order = require('../models/order')
+const { createOrder } = require('../controller/orderControllers')
+const auth = require('../middleware/auth')
 
 
 
 
-router.post('/new', createOrder)
+router.post('/new', auth, createOrder)
+
+
+
 
 
 
