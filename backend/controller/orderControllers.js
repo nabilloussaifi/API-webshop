@@ -20,7 +20,7 @@ const createOrder = async (req, res, next) => {
             await Order.findOneAndUpdate({ _id: newOrder._id }, { $push: { products: product } })
         }
 
-        // await User.findOneAndUpdate({ _id: newOrder.user_id }, { $push: { orders: newOrder._id } })
+        await User.findOneAndUpdate({ _id: newOrder.user_id }, { $push: { orders: newOrder._id } })
     } catch (err) {
         console.log(err)
         // }
