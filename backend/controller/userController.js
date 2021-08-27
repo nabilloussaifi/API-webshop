@@ -93,10 +93,27 @@ const userLogin = async (req, res) => {
     // Our login code ends here
 };
 
+// recevoir user id et envoyer user detail
+
+const getUserDetail = async (req, res) => {
+    console.log(req.query)
+    try {
+        const user = await User.findById(req.query.user)
+
+        console.log(user)
+        res.status(200).json(user);
+        res.send(user)
+    } catch (err) {
+        console.log(err)
+    }
+
+}
+
 
 module.exports = {
     userRegister,
-    userLogin
+    userLogin,
+    getUserDetail
 };
 
 
