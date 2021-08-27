@@ -8,13 +8,13 @@ const OrderSchema = new mongoose.Schema({
         }
     ],
 
-    user_id: [
+    user_id:
 
-        {
-            type: mongoose.Schema.Types.ObjectId,
-            ref: "User"
-        }
-    ],
+    {
+        type: mongoose.Schema.Types.ObjectId,
+        ref: "User"
+    }
+    ,
 
     price: {
         type: Number,

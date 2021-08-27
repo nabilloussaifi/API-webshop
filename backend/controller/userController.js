@@ -9,6 +9,7 @@ const jwt = require("jsonwebtoken")
 const userRegister = async (req, res) => {
     try {
         // Get user input
+        console.log(req.body)
         const { first_name, last_name, email, password } = req.body;
 
         // Validate user input
