@@ -13,6 +13,7 @@ router.get('/', getAllProducts)
 //@route GET /api/products/:id
 //@access Public
 router.get('/:_id', getProductById)
+//check si avec ou sans _
 
 
 

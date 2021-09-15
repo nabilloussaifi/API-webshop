@@ -50,8 +50,8 @@ const userRegister = async (req, res) => {
         // return new user
         res.status(201).json(user);
 
-    } catch (err) {
-        console.log(err);
+    } catch (error) {
+        console.log(error);
     }
     // Our register code ends here
 
